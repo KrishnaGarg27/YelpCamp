@@ -49,14 +49,14 @@ const store = MongoStore.create({
     mongoUrl: process.env.MONGODB_URL,
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret: 'thisIsASecretKey'
+        secret: process.env.SECRET
     }
 })
 
 const sessionConfig = {
     name: 'sid',
     store: store,
-    secret: 'thisIsASecretKey',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
