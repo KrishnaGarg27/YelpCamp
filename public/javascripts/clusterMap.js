@@ -8,7 +8,6 @@ const map = new maptilersdk.Map({
   style: maptilersdk.MapStyle.DATAVIZ.DARK,
 });
 
-
 map.on("load", function () {
   // add a clustered GeoJSON source for a sample set of campgrounds
   map.addSource("campgrounds", {
@@ -89,7 +88,7 @@ map.on("load", function () {
   // description HTML from its properties.
   map.on("click", "unclustered-point", function (e) {
     const coordinates = e.features[0].geometry.coordinates.slice();
-    const popUp = e.features[0].properties.popUp
+    const popUp = e.features[0].properties.popUp;
 
     // Ensure that if the map is zoomed out such that
     // multiple copies of the feature are visible, the
@@ -98,10 +97,7 @@ map.on("load", function () {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    new maptilersdk.Popup()
-      .setLngLat(coordinates)
-      .setHTML(popUp)
-      .addTo(map);
+    new maptilersdk.Popup().setLngLat(coordinates).setHTML(popUp).addTo(map);
   });
 
   map.on("mouseenter", "clusters", function () {

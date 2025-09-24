@@ -1,19 +1,18 @@
-maptilersdk.config.apiKey = mapApiKey
+maptilersdk.config.apiKey = mapApiKey;
 
 const map = new maptilersdk.Map({
-    container: 'map',
-    style: maptilersdk.MapStyle.BRIGHT,
-    center: campground.geometry.coordinates,
-    zoom: 9,
-    navigationControl: true
-})
+  container: "map",
+  style: maptilersdk.MapStyle.BRIGHT,
+  center: campground.geometry.coordinates,
+  zoom: 9,
+  navigationControl: true,
+});
 
 new maptilersdk.Marker()
-    .setLngLat(campground.geometry.coordinates)
-    .setPopup(
-        new maptilersdk.Popup({ offset: 25 })
-            .setHTML(
-                `<h3>${campground.title}</h3><p>${campground.location}</p>`
-            )
+  .setLngLat(campground.geometry.coordinates)
+  .setPopup(
+    new maptilersdk.Popup({ offset: 25 }).setHTML(
+      `<h3>${campground.title}</h3><p>${campground.location}</p>`
     )
-    .addTo(map)
+  )
+  .addTo(map);
